@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OneVoices Summer Live 2025 Present</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background: linear-gradient(to bottom, #fff0f5, #e0f7fa);
+      padding: 1em;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.8em;
+      margin-bottom: 0.2em;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-top: 0;
+    }
+
+    p {
+        text-align: center;
+        font-size: 1.4em;
+    }
+
+    .box-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .gift-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      margin: 0 auto;
+    }
+
+    .gift-image,
+    .message {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s ease;
+      padding: 1em;
+      box-sizing: border-box;
+    }
+
+    .gift-image {
+      object-fit: contain;
+      cursor: pointer;
+      background-color: transparent;
+      z-index: 2;
+    }
+
+    .gift-image.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .message {
+      opacity: 0;
+      background-color: #fff8f9;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-size: 1.1em;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .message.active {
+      opacity: 1;
+      z-index: 3;
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.3em; }
+      h2 { font-size: 1.6em; }
+      .message { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>OneVoices Summer Live 2025</h1>
+  <h2>Present</h2>
+  <p>本日は、ご来場ありがとうございます。<br>プレゼントボックスをタップしていただくと<br>サークル員からのメッセージ閲覧できます。</p>
+  <div class="box-container" id="container"></div>
+
+  <script>
+    const messages = [
+      "ご来場ありがとうございます葉fkjhfだhfはkhfhふぁh；fはlhfかｈｋｆｈかｓｈｆｋｈｈｆｊｋｓｈｆｊｋｓｈｋ",
+      "ステージでまたお会いしましょう！",
+      "夏最高！",
+      "OneVoices最高！",
+      "たくさんの応援に感謝！",
+      "またライブで会おうね！"
+    ];
+
+    const container = document.getElementById('container');
+
+    messages.forEach((msg, index) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'gift-wrapper';
+
+      const img = document.createElement('img');
+      img.src = '/Users/k_y/Desktop/SL2025Present/shopping004.png'; 
+      img.alt = 'プレゼントボックス';
+      img.className = 'gift-image';
+
+      const message = document.createElement('div');
+      message.className = 'message';
+      message.textContent = msg;
+
+      img.addEventListener('click', () => {
+        document.querySelectorAll('.message').forEach(m => m.classList.remove('active'));
+        document.querySelectorAll('.gift-image').forEach(i => i.classList.remove('fade-out'));
+
+        img.classList.add('fade-out');
+        message.classList.add('active');
+      });
+
+      wrapper.appendChild(img);
+      wrapper.appendChild(message);
+      container.appendChild(wrapper);
+    });
+  </script>
+
+</body>
+</html>

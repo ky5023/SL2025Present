@@ -81,6 +81,7 @@
       font-size: 1.1em;
       text-align: center;
       z-index: 1;
+      line-height: 1.4;
     }
 
     .message.active {
@@ -104,11 +105,11 @@
 
   <script>
     const messages = [
-      "ぷっちょ\nご来場いただきありがとうございます！贈り物をお届けできるようにこれまで頑張ってきました！",
+      "ぷっちょ<br>ご来場いただきありがとうございます！<br>贈り物をお届けできるように<br>これまで頑張ってきました！",
       "ありがとう！",
       "夏最高！",
       "OneVoices最高！",
-      "Present最高",
+      "Present最高"
     ];
 
     const container = document.getElementById('container');
@@ -124,7 +125,7 @@
 
       const message = document.createElement('div');
       message.className = 'message';
-      message.textContent = msg;
+      message.innerHTML = msg; // ← ここ重要！
 
       img.addEventListener('click', () => {
         document.querySelectorAll('.message').forEach(m => m.classList.remove('active'));

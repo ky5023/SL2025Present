@@ -112,6 +112,12 @@
       "Present最高"
     ];
 
+    const imageUrls = [
+        "https://raw.githubusercontent.com/ky5023/SL2025Present/main/img/logo_red.png",
+        "https://raw.githubusercontent.com/ky5023/SL2025Present/main/img/logo_orange.png",
+        "https://raw.githubusercontent.com/ky5023/SL2025Present/main/img/logo_blue.png"
+      ];
+
     const container = document.getElementById('container');
 
     messages.forEach((msg, index) => {
@@ -119,7 +125,7 @@
       wrapper.className = 'gift-wrapper';
 
       const img = document.createElement('img');
-      img.src = 'https://github.com/ky5023/SL2025Present/blob/main/shopping004.png?raw=true'; 
+      img.src = imageUrls[index % imageUrls.length];
       img.alt = 'プレゼントボックス';
       img.className = 'gift-image';
 
